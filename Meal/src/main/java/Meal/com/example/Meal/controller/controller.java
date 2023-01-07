@@ -20,8 +20,8 @@ class controller {
 	
 	
 	@Autowired
-	private service todoservice;
-//	private TopicService topicService;
+	private service mealService;
+
 //	
 	
 	
@@ -34,20 +34,20 @@ class controller {
 	@RequestMapping("/meals")
 	public List<meal> getMeals(){
 		
-		return todoservice.getMeals();
+		return mealService.getMeals();
 		
 	}
 	@RequestMapping("/meal/{id}")
 	public meal getSingleMeal(@PathVariable long id) {
 		
-		return todoservice.getMeal(id);
+		return mealService.getMeal(id);
 	}
 	
 	
 	@RequestMapping(method=RequestMethod.POST,value="/meal")
 	public void addMeal(@RequestBody meal todo) {
 		System.out.print(todo);
-		todoservice.addMeal(todo);
+		mealService.addMeal(todo);
 //		return todoservice.getTicket();
 	}
 
@@ -55,16 +55,16 @@ class controller {
 	@RequestMapping(method=RequestMethod.PUT,value="/meal/{id}")
 	public List<meal> updateTodo(@RequestBody meal topic,@PathVariable long id) {
 		System.out.print(topic);
-		todoservice.updateMeal(topic,id);
-		return todoservice.getMeals();
+		mealService.updateMeal(topic,id);
+		return mealService.getMeals();
 	}
 
 	
 	@RequestMapping(method=RequestMethod.DELETE,value="/meal/{id}")
 	public List<meal> deleteTodo(@PathVariable long id) {
 		System.out.print(id);
-		todoservice.deleteMeal(id);
-		return todoservice.getMeals();
+		mealService.deleteMeal(id);
+		return mealService.getMeals();
 	}
 
 }
